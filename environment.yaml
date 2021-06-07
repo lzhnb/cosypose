@@ -19,6 +19,7 @@ dependencies:
   - numpy=1.17.4
   - pillow=6.0.0
   - ipython
+  - pybind11
   - pip:
       - ./deps/bullet3
       - ./deps/job-runner

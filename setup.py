@@ -1,6 +1,7 @@
 import os
 from setuptools import setup, find_packages
-from torch.utils.cpp_extension import BuildExtension, CppExtension
+# from torch.utils.cpp_extension import BuildExtension, CppExtension
+from pybind11.setup_helpers import Pybind11Extension, build_ext
 from os import path
 
 here = path.abspath(path.dirname(__file__))
@@ -14,7 +15,8 @@ setup(
     description='CosyPose',
     packages=find_packages(),
     ext_modules=[
-        CppExtension(
+        # CppExtension(
+        Pybind11Extension(
             name='cosypose_cext',
             sources=[
                 'cosypose/csrc/cosypose_cext.cpp'
@@ -24,6 +26,7 @@ setup(
         )
     ],
     cmdclass={
-        'build_ext': BuildExtension
+        "build_ext": build_ext
+        # 'build_ext': BuildExtension
     }
 )
